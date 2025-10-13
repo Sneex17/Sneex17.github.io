@@ -188,3 +188,51 @@ img {
     filter: sepia(1) saturate(5) hue-rotate(15deg) brightness(1.1);
 }
 
+
+/*Cambios de colores textos*/
+/* Colores dorados para textos */
+/*.text-wedding-blue-900 { color: #bfa04d !important; }*/
+/*.text-wedding-blue-800 { color: #c9b14a !important; }*/
+.text-wedding-blue-600 { color: black !important; }
+.text-wedding-blue-400 { color: #e6d16f !important; }
+.text-wedding-blue-300 { color: #f0df91 !important; }
+
+/* Colores dorados para fondos de líneas */
+.bg-wedding-blue-300 { background-color: #f0df91 !important; }
+.border-wedding-blue-400 { border-color: #e6d16f !important; }
+
+/* Hover de enlaces */
+a.text-wedding-blue-600:hover { color: #bfa04d !important; }
+
+
+section.py-4.px-4.relative h4,
+section.py-4.px-4.relative p {
+    color: #000000 !important;
+}
+
+
+/* Solo afecta a los círculos dentro de esta sección */
+section.py-4.px-4.relative .circle:nth-child(1) {
+    background-color: #ffffff !important; /* blanco */
+    border: 2px solid #000000; /* borde negro */
+}
+
+section.py-4.px-4.relative .circle:nth-child(2) {
+    background-color: #000000 !important; /* negro */
+    border: 2px solid #000000; /* borde negro */
+}
+
+
+
+
+
+/* Sección específica */
+section.text-2xl md:text-2xl font-light font-handwriting leading-relaxed mb-4 {
+    font-family: 'Playfair Display', sans-serif; /* para párrafos legibles */
+}
+
+/* Comillas grandes */
+section.bg-wedding-blue-900.text-white .text-6xl {
+    font-family: 'Lora', serif; /* elegante pero sin cursiva exagerada */
+}
+
