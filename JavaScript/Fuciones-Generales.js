@@ -213,13 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
 //Trivia de parejas 16-10-25
 // Preguntas con respuesta correcta
 let preguntas = [
-    { texto: "¿Dónde se conocieron por primera vez?", opciones: ["En la universidad", "En el trabajo", "En un campamento", "En línea"], correcta: "En la universidad" },
-    { texto: "¿Quién dijo “te amo” primero?", opciones: ["Ella", "Él", "Al mismo tiempo", "Nunca lo dijeron, solo lo supieron"], correcta: "Él" },
-    { texto: "¿Cuál es la comida favorita de ambos?", opciones: ["Pasta", "Pizza", "Sushi", "Tacos"], correcta: "Pizza" },
-    { texto: "¿A quién le gusta dormir más?", opciones: ["Ella", "Él", "Ambos por igual", "Ninguno"], correcta: "Él" },
-    { texto: "¿Quién es más romántico?", opciones: ["Ella", "Él", "Los dos", "Ninguno"], correcta: "Los dos" },
-    { texto: "¿Quién se tarda más en arreglarse?", opciones: ["Ella", "Él", "Depende del día", "Se arreglan rápido los dos"], correcta: "Ella" },
-    { texto: "¿Quién fue el más nervioso el día de la propuesta?", opciones: ["Ella", "Él", "Los dos", "Ninguno, estaban tranquilos"], correcta: "Él" }
+    { texto: "¿Dónde se conocieron Rashell y Dayan?", opciones: ["En la universidad", "En la iglesia", "En un campamento", "Por un amigo común"], correcta: "En la iglesia" },
+    { texto: "¿Dónde fue la propuesta de matrimonio?", opciones: ["En un restaurante", "En la iglesia", "En un viaje", "En casa"], correcta: "En un restaurante" },
+    { texto: "¿Quién es más amante a la comida?", opciones: ["Rashell", "Dayan", "Los dos", "Ningúno"], correcta: "Dayan" },
+    { texto: "¿Qué fue lo primero que pensó Rashell cuando conoció a Dayan?", opciones: ["Qué simpático", "Qué serio", "Qué bonito habla", "No lo soporto"], correcta: "No lo soporto" },
+    { texto: "¿Cúal es su actividad favorita para compartir?", opciones: ["Salir a pasear", "Camininar en la playa", "Cocinar juntos", "Escuchar música"], correcta: "Salir a pasear" },
 ];
 
 // Función para mezclar preguntas (Fisher-Yates)
