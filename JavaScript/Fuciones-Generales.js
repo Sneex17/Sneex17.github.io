@@ -104,39 +104,7 @@ document.querySelectorAll("section button").forEach((button, index) => {
 });
 
 
-// Musica de la pagina
-/*document.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("background-music");
-    const button = document.querySelector(".wave-button");
-    const icon = button.querySelector("svg");
 
-    let isPlaying = false;
-
-    button.addEventListener("click", () => {
-        if (!isPlaying) {
-            music.play();
-            isPlaying = true;
-
-            // Cambiar ícono a "pause"
-            icon.innerHTML = `
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-            `;
-        } else {
-            music.pause();
-            isPlaying = false;
-
-            // Cambiar ícono a "play"
-            icon.innerHTML = `
-                <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
-            `;
-        }
-    });
-
-    // Evita errores de autoplay bloqueado por el navegador
-    music.addEventListener("pause", () => isPlaying = false);
-    music.addEventListener("play", () => isPlaying = true);
-});*/
 
 document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("background-music");
@@ -240,3 +208,110 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
+
+//Trivia de parejas 16-10-25
+// Preguntas con respuesta correcta
+let preguntas = [
+    { texto: "¿Dónde se conocieron por primera vez?", opciones: ["En la universidad", "En el trabajo", "En un campamento", "En línea"], correcta: "En la universidad" },
+    { texto: "¿Quién dijo “te amo” primero?", opciones: ["Ella", "Él", "Al mismo tiempo", "Nunca lo dijeron, solo lo supieron"], correcta: "Él" },
+    { texto: "¿Cuál es la comida favorita de ambos?", opciones: ["Pasta", "Pizza", "Sushi", "Tacos"], correcta: "Pizza" },
+    { texto: "¿A quién le gusta dormir más?", opciones: ["Ella", "Él", "Ambos por igual", "Ninguno"], correcta: "Él" },
+    { texto: "¿Quién es más romántico?", opciones: ["Ella", "Él", "Los dos", "Ninguno"], correcta: "Los dos" },
+    { texto: "¿Quién se tarda más en arreglarse?", opciones: ["Ella", "Él", "Depende del día", "Se arreglan rápido los dos"], correcta: "Ella" },
+    { texto: "¿Quién fue el más nervioso el día de la propuesta?", opciones: ["Ella", "Él", "Los dos", "Ninguno, estaban tranquilos"], correcta: "Él" }
+];
+
+// Función para mezclar preguntas (Fisher-Yates)
+function mezclarArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Mezclar preguntas al iniciar
+preguntas = mezclarArray(preguntas);
+
+let indice = 0;
+let puntuacion = 0;
+const contenedor = document.getElementById("quiz-container");
+
+// Función para mostrar la pregunta actual
+function mostrarPregunta() {
+    const actual = preguntas[indice];
+
+    contenedor.innerHTML = `
+        <div class="flex justify-between items-center mb-4">
+            <span class="text-sm text-wedding-blue-600">Pregunta ${indice + 1} de ${preguntas.length}</span>
+            <span id="puntaje" class="text-sm text-wedding-blue-600">Aciertos: ${puntuacion}</span>
+        </div>
+        <h3 class="text-xl font-semibold text-wedding-blue-900 mb-6">${actual.texto}</h3>
+        <div class="space-y-3">
+            ${actual.opciones.map(op => `
+                <button class="opcion w-full p-3 text-left rounded-lg border transition-colors duration-500 bg-wedding-blue-50 border-wedding-blue-200 text-wedding-blue-800 hover:bg-wedding-blue-100">${op}</button>
+            `).join("")}
+        </div>
+    `;
+
+    // Eventos de selección
+    document.querySelectorAll(".opcion").forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Validar respuesta
+            if (btn.textContent === actual.correcta) {
+                puntuacion++;
+                btn.style.backgroundColor = "#a8f0b0"; // verde claro
+            } else {
+                btn.style.backgroundColor = "#f8b0b0"; // rojo claro
+                // resaltar la correcta
+                document.querySelectorAll(".opcion").forEach(b => {
+                    if (b.textContent === actual.correcta) b.style.backgroundColor = "#a8f0b0";
+                });
+            }
+
+            // Deshabilitar botones
+            document.querySelectorAll(".opcion").forEach(b => b.disabled = true);
+
+            // Actualizar contador de aciertos en tiempo real
+            document.getElementById("puntaje").textContent = `Aciertos: ${puntuacion}`;
+
+            // Pasar a siguiente pregunta después de 0.7s
+            setTimeout(() => {
+                indice++;
+                if (indice < preguntas.length) {
+                    mostrarPregunta();
+                } else {
+                    mostrarResultado();
+                }
+            }, 700);
+        });
+    });
+}
+
+// Mostrar resultado final
+function mostrarResultado() {
+    contenedor.innerHTML = `
+        <div class="text-center py-10">
+            <h3 class="text-2xl font-semibold text-wedding-blue-900 mb-4">¡Has completado la trivia!</h3>
+            <p class="text-wedding-blue-700 mb-6">Tu puntuación fue de <strong>${puntuacion}</strong> puntos.</p>
+            <button id="reiniciar" class="px-4 py-2 bg-wedding-blue-400 text-white rounded-lg hover:bg-wedding-blue-500 transition">Volver a jugar</button>
+        </div>
+    `;
+
+    // Agregar evento al botón desde JS
+    document.getElementById("reiniciar").addEventListener("click", () => {
+        reiniciarTrivia();
+    });
+}
+
+// Reiniciar trivia
+function reiniciarTrivia() {
+    indice = 0;
+    puntuacion = 0;
+    preguntas = mezclarArray(preguntas); // volver a mezclar
+    mostrarPregunta();
+}
+
+// Iniciar
+mostrarPregunta();
