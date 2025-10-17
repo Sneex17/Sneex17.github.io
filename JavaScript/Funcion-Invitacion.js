@@ -16,3 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.classList.add('fade-out');
+
+    // Opcional: eliminar del DOM después de la transición
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 1000); // coincide con la duración del transition
+});
