@@ -1,3 +1,47 @@
+/* === Estilos para los números grandes === */
+.countdown-days {
+  font-size: 4rem; /* tamaño del número de días */
+}
+
+.countdown-hours,
+.countdown-minutes,
+.countdown-seconds {
+  font-size: 1.8rem; /* tamaño de los números pequeños */
+}
+
+/* === Estilos para los textos debajo de los números === */
+.countdown-days + .text-lg {
+  font-size: 1.2rem; /* texto “Días Restantes” */
+}
+
+.countdown-hours + .text-xs,
+.countdown-minutes + .text-xs,
+.countdown-seconds + .text-xs {
+  font-size: 0.7rem; /* texto “Horas”, “Minutos”, “Segundos” */
+}
+
+/* === (Opcional) Ajustes responsivos === */
+@media (max-width: 768px) {
+  .countdown-days {
+    font-size: 0.5rem;
+  }
+
+  .countdown-hours,
+  .countdown-minutes,
+  .countdown-seconds {
+    font-size: 0.8rem;
+  }
+
+  .countdown-days + .text-lg {
+    font-size: 0.8rem;
+  }
+
+  .countdown-hours + .text-xs,
+  .countdown-minutes + .text-xs,
+  .countdown-seconds + .text-xs {
+    font-size: 0.5rem;
+  }
+}
 
 
 /* ==== SECCIÓN CUENTA REGRESIVA ==== */
