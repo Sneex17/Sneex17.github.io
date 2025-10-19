@@ -55,7 +55,7 @@ function updateInvitation() {
         if (p1.trim() !== "") nombresPersonas.push(p1);
         if (p2.trim() !== "") nombresPersonas.push(p2);
 
-        nameText = nombresPersonas.length > 0 ? nombresPersonas.join(" ") : "Invitado";
+        nameText = nombresPersonas.length > 0 ? nombresPersonas.join(" & ") : "Invitado";
     }
     // 3️⃣ Caso: Persona individual
     else if (params.has("Nombre") && params.has("Apellido")) {
