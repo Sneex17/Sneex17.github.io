@@ -27,23 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*Validacion de los nombres de las familias o personas individual*/
-// Función para obtener parámetros de la URL
-function getUrlParams() {
-    const path = window.location.pathname; // Obtiene el path después del dominio
-    const segments = path.split("/").filter(Boolean); // Quita segmentos vacíos
-    const params = {};
-
-    segments.forEach(segment => {
-        const [key, value] = segment.split("=");
-        if (key && value) {
-            params[key.toLowerCase()] = decodeURIComponent(value);
-        }
-    });
-
-    return params;
-}
-
-// Función para actualizar la invitación
 function updateInvitation() {
     const params = new URLSearchParams(window.location.search);
     const dynamicName = document.getElementById("dynamicName");
@@ -52,16 +35,36 @@ function updateInvitation() {
     let nameText = "";
     let countText = "";
 
-    // Detectar si es familia o persona individual
+    // 1️⃣ Caso: Familia
     if (params.has("Familia1") || params.has("Familia2")) {
         const fam1 = params.get("Familia1") || "";
         const fam2 = params.get("Familia2") || "";
-        nameText = `Familia ${fam1}${fam2 ? " " + fam2 : ""}`;
-    } else if (params.has("Nombre") && params.has("Apellido")) {
-        const nombre = params.get("Nombre");
-        const apellido = params.get("Apellido");
-        nameText = `${nombre} ${apellido}`;
-    } else {
+
+        const nombresFamilia = [];
+        if (fam1.trim() !== "") nombresFamilia.push(fam1);
+        if (fam2.trim() !== "") nombresFamilia.push(fam2);
+
+        nameText = nombresFamilia.length > 0 ? `Familia ${nombresFamilia.join(" ")}` : "Familia";
+    } 
+    // 2️⃣ Caso: Dos personas
+    else if (params.has("Persona1") || params.has("Persona2")) {
+        const p1 = params.get("Persona1") || "";
+        const p2 = params.get("Persona2") || "";
+
+        const nombresPersonas = [];
+        if (p1.trim() !== "") nombresPersonas.push(p1);
+        if (p2.trim() !== "") nombresPersonas.push(p2);
+
+        nameText = nombresPersonas.length > 0 ? nombresPersonas.join(" & ") : "Invitado";
+    }
+    // 3️⃣ Caso: Persona individual
+    else if (params.has("Nombre") && params.has("Apellido")) {
+        const nombre = params.get("Nombre") || "";
+        const apellido = params.get("Apellido") || "";
+        nameText = `${nombre} ${apellido}`.trim();
+        if (nameText === "") nameText = "Invitado";
+    } 
+    else {
         nameText = "Invitado";
     }
 
@@ -74,5 +77,4 @@ function updateInvitation() {
     guestCount.textContent = countText;
 }
 
-// Ejecutar al cargar la página
 window.addEventListener("load", updateInvitation);
