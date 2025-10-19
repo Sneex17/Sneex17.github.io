@@ -92,8 +92,8 @@ window.addEventListener("DOMContentLoaded", () => {
             const numeroPareja = "18094926499"; // Número RD de ejemplo
             const mensaje = "_*Hola!*_\n\n" +
                 "Gracias por la hermosa invitación a su boda\n" +
-                "Confirmo con mucha alegría mi asistencia a este día tan especial\n\n" +
-                "Les deseo muchísimas bendiciones en esta nueva etapa de sus vidas\n\n";
+                "Confirmo con mucha alegría mi asistencia a este día tan especial.\n\n" +
+                "Les deseo muchísimas bendiciones en esta nueva etapa de sus vidas.";
             const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
             window.open(enlaceWhatsApp, "_blank");
         });
