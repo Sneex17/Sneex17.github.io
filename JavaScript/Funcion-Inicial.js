@@ -56,7 +56,7 @@ function updateInvitation() {
     if (params.has("Familia1") || params.has("Familia2")) {
         const fam1 = params.get("Familia1") || "";
         const fam2 = params.get("Familia2") || "";
-        nameText = `Familia ${fam1}${fam2 ? " & " + fam2 : ""}`;
+        nameText = `Familia ${fam1}${fam2 ? " " + fam2 : ""}`;
     } else if (params.has("Nombre") && params.has("Apellido")) {
         const nombre = params.get("Nombre");
         const apellido = params.get("Apellido");
