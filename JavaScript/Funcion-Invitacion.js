@@ -27,4 +27,111 @@ window.addEventListener('load', () => {
     }, 1000); // coincide con la duración del transition
 });
 
+//mandar los parametros
+// Variables globales que podemos usar después
+let guestNombre = "";
+let guestCantidad = 1;
 
+// Función para analizar los parámetros
+function analizarParametros() {
+    const params = new URLSearchParams(window.location.search);
+
+    // 1️⃣ Caso: Familia
+    if (params.has("Familia1") || params.has("Familia2")) {
+        const fam1 = params.get("Familia1") || "";
+        const fam2 = params.get("Familia2") || "";
+
+        const nombresFamilia = [];
+        if (fam1.trim() !== "") nombresFamilia.push(fam1);
+        if (fam2.trim() !== "") nombresFamilia.push(fam2);
+
+        guestNombre = nombresFamilia.length > 0 ? `Familia ${nombresFamilia.join(" ")}` : "Familia";
+        guestCantidad = parseInt(params.get("Cantidad")) || nombresFamilia.length || 1;
+    } 
+    // 2️⃣ Caso: Dos personas
+    else if (params.has("Persona1") || params.has("Persona2")) {
+        const p1 = params.get("Persona1") || "";
+        const p2 = params.get("Persona2") || "";
+
+        const nombresPersonas = [];
+        if (p1.trim() !== "") nombresPersonas.push(p1);
+        if (p2.trim() !== "") nombresPersonas.push(p2);
+
+        guestNombre = nombresPersonas.join(" ") || "Invitado";
+        guestCantidad = parseInt(params.get("Cantidad")) || nombresPersonas.length || 1;
+    }
+    // 3️⃣ Caso: Persona individual
+    else if (params.has("Nombre") && params.has("Apellido")) {
+        const nombre = params.get("Nombre") || "";
+        const apellido = params.get("Apellido") || "";
+
+        guestNombre = `${nombre} ${apellido}`.trim() || "Invitado";
+        guestCantidad = parseInt(params.get("Cantidad")) || 1;
+    } 
+    else {
+        guestNombre = "Invitado";
+        guestCantidad = 1;
+    }
+}
+
+// Llamar a la función al cargar la página
+window.addEventListener("DOMContentLoaded", () => {
+    analizarParametros();
+
+});
+
+
+
+// Variables globales
+let guestNombre = "";
+let guestCantidad = 1;
+
+// Función para analizar los parámetros
+function analizarParametros() {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.has("Familia1") || params.has("Familia2")) {
+        const fam1 = params.get("Familia1") || "";
+        const fam2 = params.get("Familia2") || "";
+        const nombresFamilia = [];
+        if (fam1.trim() !== "") nombresFamilia.push(fam1);
+        if (fam2.trim() !== "") nombresFamilia.push(fam2);
+        guestNombre = nombresFamilia.length > 0 ? `Familia ${nombresFamilia.join(" ")}` : "Familia";
+        guestCantidad = parseInt(params.get("Cantidad")) || nombresFamilia.length || 1;
+    } else if (params.has("Persona1") || params.has("Persona2")) {
+        const p1 = params.get("Persona1") || "";
+        const p2 = params.get("Persona2") || "";
+        const nombresPersonas = [];
+        if (p1.trim() !== "") nombresPersonas.push(p1);
+        if (p2.trim() !== "") nombresPersonas.push(p2);
+        guestNombre = nombresPersonas.join(" & ") || "Invitado";
+        guestCantidad = parseInt(params.get("Cantidad")) || nombresPersonas.length || 1;
+    } else if (params.has("Nombre") && params.has("Apellido")) {
+        const nombre = params.get("Nombre") || "";
+        const apellido = params.get("Apellido") || "";
+        guestNombre = `${nombre} ${apellido}`.trim() || "Invitado";
+        guestCantidad = parseInt(params.get("Cantidad")) || 1;
+    } else {
+        guestNombre = "Invitado";
+        guestCantidad = 1;
+    }
+}
+
+// Llamar la función al cargar la página
+window.addEventListener("DOMContentLoaded", () => {
+    analizarParametros();
+
+    // Seleccionar el botón de Confirmar Asistencia
+    const confirmarBtn = document.querySelector(".add-calendar-btn");
+
+    if (confirmarBtn) {
+        confirmarBtn.addEventListener("click", () => {
+            const numeroPareja = "18094926499"; // Cambia por el número real de la pareja
+            const mensaje = `Invitación de: ${guestNombre}\nHola!, confirmamos nuestra asistencia.`;
+            const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
+
+            // Abrir WhatsApp Web o app
+            window.open(enlaceWhatsApp, "_blank");
+        });
+    }
+});
