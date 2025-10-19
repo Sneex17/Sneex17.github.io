@@ -82,9 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-// Variables globales
-let guestNombre = "";
-let guestCantidad = 1;
+
 
 // Función para analizar los parámetros
 function analizarParametros() {
