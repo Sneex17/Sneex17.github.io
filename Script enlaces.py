@@ -22,7 +22,7 @@ def actualizar_excel(tipo, archivo):
                 fam2 = str(row['Familia2']).strip() if not pd.isna(row['Familia2']) else ""
                 cantidad = row['Cantidad']
 
-                enlace = f"https://sneex17.github.io/#Familia1={urllib.parse.quote(fam1)}&Familia2={urllib.parse.quote(fam2)}&Cantidad={cantidad}"
+                enlace = f"https://sneex17.github.io/?Familia1={urllib.parse.quote(fam1)}&Familia2={urllib.parse.quote(fam2)}&Cantidad={cantidad}"
                 print(f"Familia: {fam1} {fam2} | enlace: {enlace}")
                 df.at[index, 'Enlaces'] = enlace
 
@@ -32,10 +32,10 @@ def actualizar_excel(tipo, archivo):
                 cantidad = row['Cantidad']
 
                 if cantidad > 1:
-                    enlace = f"https://sneex17.github.io/#Persona1={urllib.parse.quote(persona1)}&Persona2={urllib.parse.quote(persona2)}&Cantidad={cantidad}"
+                    enlace = f"https://sneex17.github.io/?Persona1={urllib.parse.quote(persona1)}&Persona2={urllib.parse.quote(persona2)}&Cantidad={cantidad}"
                     print(f"Personas: {persona1} {persona2} | enlace: {enlace}")
                 else:
-                    enlace = f"https://sneex17.github.io/#Nombre={urllib.parse.quote(persona1)}&Apellido={urllib.parse.quote(persona2)}&Cantidad={cantidad}"
+                    enlace = f"https://sneex17.github.io/?Nombre={urllib.parse.quote(persona1)}&Apellido={urllib.parse.quote(persona2)}&Cantidad={cantidad}"
                     print(f"Persona: {persona1} {persona2} | enlace: {enlace}")
                 df.at[index, 'Enlaces'] = enlace
 

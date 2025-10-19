@@ -78,3 +78,14 @@ function updateInvitation() {
 }
 
 window.addEventListener("load", updateInvitation);
+
+//Pasar los parametros
+const openBtn = document.getElementById("openInvitationBtn");
+
+openBtn.addEventListener("click", () => {
+    // Captura los parámetros actuales de la URL
+    const params = window.location.search; // Ej: "?Nombre=Juan&Apellido=Perez&Cantidad=2"
+
+    // Redirige a invitacion.html con los mismos parámetros
+    window.location.href = "invitacion.html" + params;
+});
