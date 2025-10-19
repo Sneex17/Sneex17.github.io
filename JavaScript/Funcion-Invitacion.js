@@ -47,30 +47,31 @@ function getUrlParams() {
 
 // Función para actualizar la invitación
 function updateInvitation() {
-    const params = getUrlParams();
+    const params = new URLSearchParams(window.location.search);
     const dynamicName = document.getElementById("dynamicName");
     const guestCount = document.getElementById("guestCount");
 
     let nameText = "";
     let countText = "";
 
-    if (params.familia1 || params.familia2) {
-        // Caso familias
-        const fam1 = params.familia1 || "";
-        const fam2 = params.familia2 || "";
+    // Detectar si es familia o persona individual
+    if (params.has("Familia1") || params.has("Familia2")) {
+        const fam1 = params.get("Familia1") || "";
+        const fam2 = params.get("Familia2") || "";
         nameText = `Familia ${fam1}${fam2 ? " & " + fam2 : ""}`;
-    } else if (params.nombre && params.apellido) {
-        // Caso persona individual
-        nameText = `${params.nombre} ${params.apellido}`;
+    } else if (params.has("Nombre") && params.has("Apellido")) {
+        const nombre = params.get("Nombre");
+        const apellido = params.get("Apellido");
+        nameText = `${nombre} ${apellido}`;
     } else {
-        // Caso sin parámetros válidos
         nameText = "Invitado";
     }
 
-    const cantidad = params.cantidad ? parseInt(params.cantidad) : 1;
+    // Cantidad
+    const cantidad = params.has("Cantidad") ? parseInt(params.get("Cantidad")) : 1;
     countText = cantidad === 1 ? "Invitación válida para 1 persona" : `Invitación válida para ${cantidad} personas`;
 
-    // Actualiza el HTML
+    // Actualizar HTML
     dynamicName.textContent = nameText;
     guestCount.textContent = countText;
 }
