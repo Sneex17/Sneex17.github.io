@@ -100,11 +100,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 0%;
     height: 0;
     border-left: 175px solid transparent;
     border-right: 175px solid transparent;
-    border-bottom: 140px solid #e0edf6;
+    border-bottom: 70px solid #d0b355;
     z-index: 1;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
