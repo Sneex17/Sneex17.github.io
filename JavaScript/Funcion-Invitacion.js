@@ -83,50 +83,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-// Función para analizar los parámetros
-// Variables globales
-
-
-// Analizar parámetros
-function analizarParametros() {
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.has("Familia1") || params.has("Familia2")) {
-        const fam1 = params.get("Familia1") || "";
-        const fam2 = params.get("Familia2") || "";
-        const nombresFamilia = [];
-        if (fam1.trim() !== "") nombresFamilia.push(fam1);
-        if (fam2.trim() !== "") nombresFamilia.push(fam2);
-        guestNombre = nombresFamilia.length > 0 ? `Familia ${nombresFamilia.join(" ")}` : "Familia";
-        guestCantidad = parseInt(params.get("Cantidad")) || nombresFamilia.length || 1;
-    } else if (params.has("Persona1") || params.has("Persona2")) {
-        const p1 = params.get("Persona1") || "";
-        const p2 = params.get("Persona2") || "";
-        const nombresPersonas = [];
-        if (p1.trim() !== "") nombresPersonas.push(p1);
-        if (p2.trim() !== "") nombresPersonas.push(p2);
-        guestNombre = nombresPersonas.join(" & ") || "Invitado";
-        guestCantidad = parseInt(params.get("Cantidad")) || nombresPersonas.length || 1;
-    } else if (params.has("Nombre") && params.has("Apellido")) {
-        const nombre = params.get("Nombre") || "";
-        const apellido = params.get("Apellido") || "";
-        guestNombre = `${nombre} ${apellido}`.trim() || "Invitado";
-        guestCantidad = parseInt(params.get("Cantidad")) || 1;
-    }
-}
-
-// Evento al cargar la página
+//mandar mensaje de confirmacion
+// Al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
-    analizarParametros();
-
     const btn = document.getElementById("confirmBtn");
     if (btn) {
         btn.addEventListener("click", () => {
             const numeroPareja = "18091234567"; // Número RD de ejemplo
-            const mensaje = `Invitación de: ${guestNombre}\nHola!, confirmamos nuestra asistencia.`;
+            const mensaje = "💌 Hola! Gracias por la invitación a tu boda.\n\n🎉 Te envío este mensaje para confirmar mi asistencia 💍";
             const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
             window.open(enlaceWhatsApp, "_blank");
         });
     }
 });
+
