@@ -200,3 +200,34 @@ body {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/*Nuevos cambios*/
+.guest-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1b2a4e;
+    font-family: "Playfair Display", serif;
+}
+
+.guest-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1b2a4e;
+    font-family: "Dancing Script", cursive; /* elegante y similar a la imagen */
+    margin-bottom: 0.5rem;
+}
+
+.guest-message {
+    font-size: 1rem;
+    color: #354a67;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.guest-count {
+    font-size: 0.85rem;
+    color: #6c7a93;
+    margin-top: 1.2rem;
+}
+

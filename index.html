@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!--<link rel="stylesheet" href="CSS/Sobre-Styles.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -17,6 +19,10 @@
     <!-- Contenido principal -->
     <div id="mainContent">
         <div class="invitation-wrapper">
+            <div class="guest-info">
+                    <h2 class="guest-name">Nombre<span id="dynamicName"></span></h2>
+                    <p class="guest-message">Sus manos</p> 
+                </div>
             <div class="envelope-container">
                 <div class="envelope-mockup">
                     <div class="envelope-flap-top-mock"></div>
@@ -24,13 +30,16 @@
                         <img src="Detalles/Logo-RD.png" alt="Logo" class="envelope-logo">
                     </div>
                 </div>
+                
                 <button id="openInvitationBtn" class="action-button">
                     <i class="fas fa-envelope-open-text"></i> Abrir Invitación
                 </button>
+                <p class="guest-count" id="guestCount">Invitación válida para cantidad personas</p>
                 <p id="notFoundMessage" class="status-message hidden">Invitado no encontrado</p>
             </div>
         </div>
     </div>
     <script src="JavaScript/Funcion-Inicial.js"></script>
 </body>
+
 </html>

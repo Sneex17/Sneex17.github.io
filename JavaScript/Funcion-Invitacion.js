@@ -26,3 +26,54 @@ window.addEventListener('load', () => {
         preloader.style.display = 'none';
     }, 1000); // coincide con la duración del transition
 });
+
+
+/*Validacion de los nombres de las familias o personas individual*/
+// Función para obtener parámetros de la URL
+function getUrlParams() {
+    const path = window.location.pathname; // Obtiene el path después del dominio
+    const segments = path.split("/").filter(Boolean); // Quita segmentos vacíos
+    const params = {};
+
+    segments.forEach(segment => {
+        const [key, value] = segment.split("=");
+        if (key && value) {
+            params[key.toLowerCase()] = decodeURIComponent(value);
+        }
+    });
+
+    return params;
+}
+
+// Función para actualizar la invitación
+function updateInvitation() {
+    const params = getUrlParams();
+    const dynamicName = document.getElementById("dynamicName");
+    const guestCount = document.getElementById("guestCount");
+
+    let nameText = "";
+    let countText = "";
+
+    if (params.familia1 || params.familia2) {
+        // Caso familias
+        const fam1 = params.familia1 || "";
+        const fam2 = params.familia2 || "";
+        nameText = `Familia ${fam1}${fam2 ? " & " + fam2 : ""}`;
+    } else if (params.nombre && params.apellido) {
+        // Caso persona individual
+        nameText = `${params.nombre} ${params.apellido}`;
+    } else {
+        // Caso sin parámetros válidos
+        nameText = "Invitado";
+    }
+
+    const cantidad = params.cantidad ? parseInt(params.cantidad) : 1;
+    countText = cantidad === 1 ? "Invitación válida para 1 persona" : `Invitación válida para ${cantidad} personas`;
+
+    // Actualiza el HTML
+    dynamicName.textContent = nameText;
+    guestCount.textContent = countText;
+}
+
+// Ejecutar al cargar la página
+window.addEventListener("load", updateInvitation);
