@@ -85,6 +85,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 // Función para analizar los parámetros
+// Variables globales
+
+
+// Analizar parámetros
 function analizarParametros() {
     const params = new URLSearchParams(window.location.search);
 
@@ -109,26 +113,19 @@ function analizarParametros() {
         const apellido = params.get("Apellido") || "";
         guestNombre = `${nombre} ${apellido}`.trim() || "Invitado";
         guestCantidad = parseInt(params.get("Cantidad")) || 1;
-    } else {
-        guestNombre = "Invitado";
-        guestCantidad = 1;
     }
 }
 
-// Llamar la función al cargar la página
+// Evento al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
     analizarParametros();
 
-    // Seleccionar el botón de Confirmar Asistencia
-    const confirmarBtn = document.querySelector(".add-calendar-btn");
-
-    if (confirmarBtn) {
-        confirmarBtn.addEventListener("click", () => {
-            const numeroPareja = "18094926499"; // Cambia por el número real de la pareja
+    const btn = document.getElementById("confirmBtn");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            const numeroPareja = "18091234567"; // Número RD de ejemplo
             const mensaje = `Invitación de: ${guestNombre}\nHola!, confirmamos nuestra asistencia.`;
             const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
-
-            // Abrir WhatsApp Web o app
             window.open(enlaceWhatsApp, "_blank");
         });
     }
