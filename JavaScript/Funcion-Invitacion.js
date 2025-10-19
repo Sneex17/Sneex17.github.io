@@ -83,17 +83,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-//mandar mensaje de confirmacion
-// Al cargar la página
-window.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("confirmBtn");
-    if (btn) {
-        btn.addEventListener("click", () => {
-            const numeroPareja = "18091234567"; // Número RD de ejemplo
-            const mensaje = "💌 Hola! Gracias por la invitación a tu boda.\n\n🎉 Te envío este mensaje para confirmar mi asistencia 💍";
-            const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
-            window.open(enlaceWhatsApp, "_blank");
-        });
-    }
-});
+
 
