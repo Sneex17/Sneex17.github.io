@@ -83,14 +83,30 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-//mandar mensaje de confirmacion
-// Al cargar la página
+//Mandar mensaje de confirmacion a Dayan
 window.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("confirmBtn");
+    const btn = document.getElementById("confirmBtn1");
     if (btn) {
         btn.addEventListener("click", () => {
-            const numeroPareja = "18094926499"; // Número RD de ejemplo
-            const mensaje = "_*Hola!*_\n\n" +
+            const numeroPareja = "18094926499"; // Número RD de Dayan
+            const mensaje = "_*Hola Dayan!*_\n\n" +
+                "Gracias por la hermosa invitación a su boda\n" +
+                "Confirmo con mucha alegría mi asistencia a este día tan especial.\n\n" +
+                "Les deseo muchísimas bendiciones en esta nueva etapa de sus vidas.";
+            const enlaceWhatsApp = `https://wa.me/${numeroPareja}?text=${encodeURIComponent(mensaje)}`;
+            window.open(enlaceWhatsApp, "_blank");
+        });
+    }
+});
+
+
+//Mandar mensaje de confirmacion a Rashell
+window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("confirmBtn2");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            const numeroPareja = "18096669876"; // Número RD de Rashell
+            const mensaje = "_*Hola Rashell!*_\n\n" +
                 "Gracias por la hermosa invitación a su boda\n" +
                 "Confirmo con mucha alegría mi asistencia a este día tan especial.\n\n" +
                 "Les deseo muchísimas bendiciones en esta nueva etapa de sus vidas.";

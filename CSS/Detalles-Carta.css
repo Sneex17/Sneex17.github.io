@@ -125,14 +125,23 @@
   transition: stroke-dashoffset 1s ease-out;
 }
 
+.botones-centro {
+  display: flex;
+  flex-direction: column; /* Coloca los botones uno debajo del otro */
+  align-items: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espaciado entre los botones */
+}
 /* ==== BOTÓN “AGREGAR AL CALENDARIO” ==== */
 .add-calendar-btn {
+
   background-color: #ffffff;
   color: #111111;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
+  margin: 0 0 17px 0;
+
 }
 
 .add-calendar-btn:hover {
@@ -140,6 +149,30 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
+/* ==== Botones de confirmacion ==== */
+.confirmBtn {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+  margin: 0 0 17px 0;
+  justify-content: center;
+  align-items: center;
+  width: 50vh;
+}
+
+.confirmBtn:hover {
+  background-color: #f4f4f4;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+.ico-boton {
+  width: 24px;
+  height: 24px;
+}
+
 
 /* ==== IMÁGENES ==== */
 img {
@@ -212,6 +245,16 @@ img {
   background-color: #f9f5e8;
 }
 
+.confirmBtn {
+  transition: all 0.3s ease;
+  
+}
+
+.confirmBtn:hover {
+  transform: scale(1.05);
+  background-color: #f9f5e8;
+
+}
 /* Texto principal */
 .countdown-days {
   font-size: 4rem;
