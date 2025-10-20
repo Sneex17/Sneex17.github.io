@@ -249,7 +249,10 @@ img {
   transition: all 0.3s ease;
   
 }
-
+.botones-centro {
+  
+  margin: 0 0 17px 0;
+}
 .confirmBtn:hover {
   transform: scale(1.05);
   background-color: #f9f5e8;
