@@ -238,6 +238,12 @@ img {
 /* Botón estilo limpio */
 .add-calendar-btn {
   transition: all 0.3s ease;
+  width: 90%;           /* Se adapta al ancho del contenedor/pantalla */
+  max-width: 400px;     /* Evita que se hagan demasiado grandes */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 17px auto; /* Centrado y separación */
 }
 
 .add-calendar-btn:hover {
